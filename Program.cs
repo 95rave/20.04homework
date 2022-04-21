@@ -1,46 +1,44 @@
-using System;
-using System.Text;
+﻿using System;
 
-namespace _20._04task1
+namespace _20._04task2update
 {
     class Program
     {
         static void Main(string[] args)
         {
-            {
-                string normal = Capitalized("bU tasKI metHodla yAzmAliSiz");
-                Console.WriteLine(normal);
-                Console.WriteLine("bU tasKI metHodla yAzmAliSiz");
+            Student student = new Student("Ravana", "Piriyeva", "P324 ", 85, false);
+            student.getInfo();
+            student.ExamChance();
 
+        }
 
+    }
 
+    class Student
+    {
+        public string Name;
+        public string Surname;
+        public string Group;
+        public byte Point;
+        public bool Graduated;
 
+        public Student(string name, string surname, string group, byte point, bool graduated)
+        {
+            Name = name;
+            Surname = surname;
+            Group = group;
+            Point = point;
+            Graduated = graduated;
+        }
 
-            }
-            static string Capitalized(string sentence)
-            {
+        public void getInfo()
+        {
+            Console.WriteLine($"Name: {Name} \n Surname: {Surname} \n Group: {Group} \n Point: {Point} \n Graduated: {(Graduated ? "Graduated" : "Not graduated")}");
+        }
 
-                StringBuilder stringBuilder = new StringBuilder();
-                sentence = sentence.ToLower();
-                string[] words = sentence.Split();
-
-                foreach (string word in words)
-                {
-                    stringBuilder.Append(char.ToUpper(word[0]));
-                    for (int i = 1; i < word.Length; i++)
-                    {
-                        stringBuilder.Append(word[i]);
-                    }
-                    if (word != words[words.Length - 1])
-                    {
-                        stringBuilder.Append(" ");
-                    }
-                }
-
-                return stringBuilder.ToString();
-
-            }
-
+        public void ExamChance()
+        {
+            Console.WriteLine($"{(Point > 80 ? $"Allowed to take the exam" : $"Are not allowed to take the exam")}");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Text;
 
 namespace _20._04task1
 {
@@ -6,20 +7,40 @@ namespace _20._04task1
     {
         static void Main(string[] args)
         {
-            string str = "bU tasKI metHodla yAzmAliSiz";
-            string lowerstr = str.ToLower();
-            
-            Console.WriteLine(lowerstr);
+            {
+                string normal = Capitalized("bU tasKI metHodla yAzmAliSiz");
+                Console.WriteLine(normal);
+                Console.WriteLine("bU tasKI metHodla yAzmAliSiz");
 
-            if (lowerstr.Length==0)
-               System.Console.WriteLine("Empty String");
-                
-            else if (lowerstr.Length==1)
-               System.Console.WriteLine(char.ToUpper(lowerstr[0]));
-            else
-               System.Console.WriteLine(char.ToUpper(lowerstr[0]) + lowerstr.Substring(1));
-          
+
+
+
+
+            }
+            static string Capitalized(string sentence)
+            {
+
+                StringBuilder stringBuilder = new StringBuilder();
+                sentence = sentence.ToLower();
+                string[] words = sentence.Split();
+
+                foreach (string word in words)
+                {
+                    stringBuilder.Append(char.ToUpper(word[0]));
+                    for (int i = 1; i < word.Length; i++)
+                    {
+                        stringBuilder.Append(word[i]);
+                    }
+                    if (word != words[words.Length - 1])
+                    {
+                        stringBuilder.Append(" ");
+                    }
+                }
+
+                return stringBuilder.ToString();
+
+            }
+
         }
-        
     }
 }
